@@ -1,13 +1,13 @@
 #include <stdio.h>
-int main() {
-  int entries;
-  int count = 1;
-  printf("This program prints a table of squares.\nEnter number of entries in table: ");
-  scanf("%d", &entries);
+int main(void) {
+  int i, n;
+  printf("This program prints a table of squares \n");
+  printf("Enter number for number of entries: ");
+  scanf("%d", &n);
 
-  while (count <= entries){
-    printf("\t\t%d\t\t%d\n", count, count * count);
-    count++;
+  for (i = 1; i <= n; i++) {
+    printf("%10d%10d\n", i, i*i);
   }
+
   return 0;
 }
