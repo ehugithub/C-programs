@@ -2,7 +2,7 @@
 int main() {
   int n;
   float sum = 1, factorial = 1;
-  printf("This program approximates the value of e with its taylor series.\n");
+  printf("This program approximates the value of e using its taylor series.\n");
   printf("Please enter an the number of terms (n): ");
   scanf("%d", &n);
 
