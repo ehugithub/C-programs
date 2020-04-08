@@ -9,7 +9,7 @@ int main() {
   switch (tens) {
     case 1:
       switch (ones) {
-        case 1 : printf("eleven"); break;
+        case 1: printf("eleven"); break;
         case 2: printf("twelve"); break;
         case 3: printf("thirteen"); break;
         case 4: printf("fourteen"); break;
