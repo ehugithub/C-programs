@@ -74,7 +74,7 @@ void playgame(void) {
   char num;
   restart();
   drawboard();
-  while (checkWin() == 0) {
+  while (!checkWin()) {
     printf("Player %d, enter a number: ", turn ? 1 : 2);
     scanf(" %c", &num);
     switch (num) {
