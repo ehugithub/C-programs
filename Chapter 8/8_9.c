@@ -15,6 +15,7 @@ int main() {
 
   while (c < 91) {
     direction = rand() % 4;
+    if ((x == 0 || grid[x - 1][y] != '.') && (y == 0 || grid[x][y - 1] != '.') && (x == 9 || grid[x + 1][y] != '.') && (y == 9 || grid[x][y + 1] != '.')) break;
     if (direction == 0){
       if (x == 0 || grid[x - 1][y] != '.')
         continue;
@@ -39,8 +40,6 @@ int main() {
     else
      y += 1;
   }
-  /* if (x = 0 || grid[x - 1][y] != '.' && y == 0 || grid[x][y - 1] != '.'
-      && x == 9 || grid[x + 1][y] != '.' && y == 9 || grid[x][y + 1] != '.') break; */
   grid[x][y] = c;
   c++;
 }
