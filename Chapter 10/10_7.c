@@ -1,24 +1,33 @@
 #include <stdio.h>
 #include <stdbool.h>
-int num;
-bool grid;
+bool grid[3][40];
+int nums[10];
 void display_num(void);
 void map_digits(void);
 int main() {
-  printf("Enter max amount of numbers for the display: ");
-  scanf("%d", &num);
+  char ch;
+  bool grid[3][40];
+  for (int x = 0; x < 3; x++) {
+    for (int y = 0; y < 40; y++)
+      grid[x][y] = false;
+  }
 
-  bool grid[3][num * 3];
 
-
-  //printf("Enter a number: ");
-
+  printf("Enter a 10 - digit number: ");
+  for (int i = 0; i < 10; i++) {
+    scanf("%c", &ch);
+    nums[i] = ch - '0';
+  }
   return 0;
 }
 
 void display_num(void) {
-  for (int i = 0; i++; i < 3) {
-    for (int j = 0; j++; j < (sizeof(grid) / sizeof(grid[0]))) {
+  for (int i = 0; i < 3; i++) {
+    for (int j = 0; j < 40; j++) {
+      if (!grid[i][j]) {
+        if (j % 2) printf("|");
+        else printf("_");
+      }
 
     }
   }
