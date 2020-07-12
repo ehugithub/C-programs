@@ -19,7 +19,7 @@ int main() {
     rank = rand() % 13;
     if (!in_hand[suit][rank]) {
       in_hand[suit][rank] = true;
-      num_cards --;
+      num_cards--;
       printf(" %c%c", rank_code[rank], suit_code[suit]);
 
 
