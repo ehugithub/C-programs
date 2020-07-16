@@ -2,45 +2,36 @@
 #include <stdbool.h>
 #include <string.h>
 
-void reverse_name (char *name);
+void reverse_name (char *first, char *last);
 
 
 int main() {
-  char input[50], *p = input;
+  char name1[20], name2[20], *p1 = name1, *p2 = name2;
 
   printf("Enter a name: ");
-  scanf("%s", p);
+  scanf("%s%s", p1, p2);
 
-  reverse_name(p);
-
-
-  /* char ch, initial1 = '0';
-  bool skip = false;
-  printf("Enter a first and last name: ");
-  ch = getchar();
-  while (ch != '\n'){
-    if (ch != ' ' && initial1 == '0')
-      initial1 = ch;
-    else if (ch == ' ' && initial1 !='0' && skip == false)
-      skip = true;
-    else if (ch != ' ' && initial1 != '0' && skip == true)
-      printf("%c", ch);
-    ch = getchar();
-  }
-
-  printf(", %c.", initial1); */
+  reverse_name(p1, p2);
 
   return 0;
 }
 
-void reverse_name (char *name) {
-  char *point = name + strlen(name), *space;
+void reverse_name (char *first, char *last) {
+  char *point;
 
-  /* for(;;) {
-    if (*point-- == ' ') {space = point; break;}
+  for (point = last; *point != '\0'; point++) {
+    if (*point == ' ')
+     break;
+    printf("%c", *point);
   }
 
-  while(*space++) printf("%c, ", *space); */
+  printf(", ");
+  point = first;
+  do {
+    printf("%c", *point);
+  } while(*point == ' ');
+
+  printf(".");
 
 
 

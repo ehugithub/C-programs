@@ -6,14 +6,12 @@ int main() {
   float avg;
   printf("Enter a sentence: ");
 
-  ch = getchar();
-  while (ch != '\n') {
+  while ((ch = getchar()) != '\n') {
     switch (ch) {
       case '.': case '!': case '?': break;
       case ' ': total += length; length = 0; space += 1; break;
       default: length += 1; break;
     }
-    ch = getchar();
   }
 
   avg = (total + length) / (float) space;
