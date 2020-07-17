@@ -14,16 +14,17 @@ int pop(void);
 // 1 2 3 * + =
 // 5 8 * 4 9 - / =
 int main() {
+  int num1, num2, num3;
   char ch;
   while (true) {
     printf("Enter an RPN expression: ");
     while ((ch = getchar()) != '\n') {
       if (ch == ' ')
         continue;
-      printf("%d ", contents[0]);
+      /* printf("%d ", contents[0]);
       printf("%d ", contents[1]);
       printf("%d ", contents[2]);
-      printf("%d ", contents[3]);
+      printf("%d ", contents[3]); */
       switch(ch) {
         case '0': case '1': case '2': case '3': case '4': case '5': case '6': case '7': case '8': case '9':
           push(ch - '0');
@@ -35,10 +36,18 @@ int main() {
           push(pop() + pop());
           break;
         case '-':
-          push((pop() * -1) + pop());
+          num1 = pop();
+          num2 = pop();
+          num3 = num2 - num1;
+          push(num3);
+          //push(-pop() + pop());
           break;
         case '/':
-          push((1 / pop()) * pop());
+          num1 = pop();
+          num2 = pop();
+          num3 = num2 / num1;
+          push(num3);
+          //push((1 / pop()) * pop());
           break;
         case '=':
           printf("Value of Expression: %d", pop());

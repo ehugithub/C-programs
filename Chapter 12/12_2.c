@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <ctype.h>
 
 
 int main() {
@@ -12,11 +13,7 @@ int main() {
 
   ch = getchar();
   while (ch != '\n') {
-    if ((ch >= 65 && ch <= 90) || (ch >= 97 && ch <= 122)) {
-      if (ch >= 65 && ch <= 90)
-        ch += 32;
-      sentence[num++] = ch;
-    }
+    sentence[num++] = toupper(ch);
     ch = getchar();
   }
 
@@ -26,9 +23,8 @@ int main() {
       palindrome = false;
   }
 
-  if (palindrome)
-    printf("Palindrome");
-  else printf("Not a palindrome");
+
+  printf("%s", palindrome ? "Palindrome" : "Not a palindrome");
 
 
   return 0;
