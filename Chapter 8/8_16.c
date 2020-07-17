@@ -16,11 +16,11 @@ int main() {
     ch = getchar();
   }
 
-  for (int i = 0; i < 26; i++){
-    printf("%d", word[i]);
+  for (int i = 0; i < 26; i++) {
     if (word[i] != 0) {anagram = 1; break;}
   }
-  if (anagram == 0) printf("The words are anagrams");
-  else printf("The words are not anagrams");
+
+  printf("The words are %s", !anagram ? "anagrams" : "not anagrams");
+
   return 0;
 }

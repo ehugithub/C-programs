@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <ctype.h>
 
-int compute_vowel_count (char *sentence);
+int compute_vowel_count (const char *sentence);
 
 
 int main() {
@@ -21,13 +21,12 @@ int main() {
   return 0;
 }
 
-int compute_vowel_count (char *sentence){
+int compute_vowel_count (const char *sentence){
   int vowels = 0;
-  char *point;
-  for (point = sentence; *point != '\0'; point++) {
-    *point = toupper(*point);
-    if (*point == 'A' || *point == 'E' || *point == 'I' || *point =='O' || *point == 'U')
+  do {
+    if (*sentence == 'A' || *sentence == 'E' || *sentence == 'I' || *sentence =='O' || *sentence == 'a' || *sentence == 'e' || *sentence == 'i' || *sentence == 'o' || *sentence == 'u' || *sentence == 'U')
       vowels += 1;
-  }
+  } while(*++sentence);
+
   return vowels;
 }

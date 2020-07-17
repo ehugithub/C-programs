@@ -6,10 +6,8 @@ int main() {
   int num = 0;
   printf("Enter a message: ");
 
-  ch = getchar();
-  while (ch != '\n') {
+  while ((ch = getchar()) != '\n') {
     sentence[num++] = ch;
-    ch = getchar();
   }
 
   printf("Reversal is: ");

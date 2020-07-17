@@ -17,19 +17,17 @@ int main() {
 }
 
 void reverse_name (char *first, char *last) {
-  char *point;
 
-  for (point = last; *point != '\0'; point++) {
-    if (*point == ' ')
+  do {
+    if (*last == ' ')
      break;
-    printf("%c", *point);
-  }
+    printf("%c", *last);
+  } while(*++last);
 
   printf(", ");
-  point = first;
   do {
-    printf("%c", *point);
-  } while(*point == ' ');
+    printf("%c", *first);
+  } while(*first == ' ');
 
   printf(".");
 

@@ -20,9 +20,8 @@ int main() {
       message[j] = (message[j] + shift <= 90) ? message[j] + shift : ((message[j] - 'A') + shift) % 26 + 'A';
     else if (message[j] >= 97 && message[j] <= 122)
       message[j] = (message[j] + shift <= 122) ? message[j] + shift : ((message[j] - 'a') + shift) % 26 + 'a';
-
-
   }
+
   printf("Encrypted message: ");
   for (int j = 0; j <= last; j++){
     printf("%c", message[j]);

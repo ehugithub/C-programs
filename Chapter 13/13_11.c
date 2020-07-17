@@ -20,18 +20,18 @@ int main() {
 
 double compute_average_word_length(const char *sentence) {
   double total = 0, length = 0, words = 1;
-  char *p;
-  for(p = (char *) sentence; *p != '\0'; p++) {
-    if (*p == ' '){
-      printf("%.2lf ", length);
+  
+  do {
+    if (*sentence == ' '){
       total += length - 1;
       length = 0;
       words += 1;
     }
-    else if (*p == '!' || *p == '.' || *p == '?')
+    else if (*sentence == '!' || *sentence == '.' || *sentence == '?')
       continue;
     length++;
-  }
+  } while(*++sentence);
+
 
   return (total + length) / words;
 }
