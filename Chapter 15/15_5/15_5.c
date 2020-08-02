@@ -1,15 +1,10 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include "15_5.h"
 
 int contents[100];
 int top = 0;
-
-void make_empty(void);
-bool is_full(void);
-bool is_empty(void);
-void push(int i);
-int pop(void);
 
 // 239, 313
 // 1 2 3 * + =
