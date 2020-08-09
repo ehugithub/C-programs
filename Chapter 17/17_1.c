@@ -1,26 +1,28 @@
 #include <stdio.h>
-#include "readline.h"
-#include "readline.c"
 #include <ctype.h>
+#include <stdlib.h>
 
 #define NAME_LEN 25
-#define MAX_PARTS 100
 
 struct part {
   int number;
   char name[NAME_LEN + 1];
   int on_hand;
-} inventory[MAX_PARTS];
+} *inventory;
 
-int num_parts = 0;
+
+int num_parts = 0, size = 10;
 int find_part(int number);
 void insert(void);
 void search(void);
+int read_line (char str[], int n);
 void update(void);
 void print(void);
 
 int main () {
   char code;
+
+  inventory = (part *) malloc (size * sizeof(inventory));
 
   for (;;) {
     printf("Enter operation code: ");
@@ -48,9 +50,9 @@ int find_part (int number) {
 
 void insert(void) {
   int part_number;
-  if (num_parts == MAX_PARTS) {
-    printf("Database is full, can't add more parts \n");
-    return;
+  if (num_parts == size) {
+    inventory = (part *) realloc(inventory, size * sizeof(inventory));
+    printf("Inventory was full, but its size was doubled.\n");
   }
 
   printf("Enter part number: ");
@@ -107,4 +109,16 @@ void print(void) {
   for (int i = 0; i < num_parts; i++)
     printf("%7d\t\t%-25s%11d\n", inventory[i].number, inventory[i].name, inventory[i].on_hand);
 
+}
+
+int read_line (char str[], int n) {
+  int ch, i = 0;
+  while (isspace(ch = getchar()));
+  while (ch != '\n' && ch != EOF) {
+    if (i < n)
+      str[i++] = ch;
+    ch = getchar();
+  }
+  str[i] = '\0';
+  return i;
 }
