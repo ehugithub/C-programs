@@ -19,7 +19,6 @@ int main () {
 
     /* if (getchar() == '\n')
       break; */
-    printf("%d", strlen(word));
     list[i] = (char *) malloc(strlen(word));
     strcpy(list[i], word);
   }
