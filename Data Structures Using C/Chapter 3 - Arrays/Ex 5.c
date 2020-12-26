@@ -1,19 +1,31 @@
-#include <stdio.h>
 int main() {
-    int num;
+    int num, count = 0;
 
-    printf("Enter the number of digits: ");
+    printf("Enter the number of elements in the array: ");
     scanf("%d", &num);
     int arr[num];
+    int dupe[num];
+    int index[num];
 
     for (int i = 0; i < num; i++) {
-            printf("\nEnter the digit at position %d: ", i + 1);
+            printf("\narr[%d] = ", i);
             scanf("%d", &arr[i]);
+
+            for (int j = 0; j < num; j++){
+                if (arr[i] == dupe[j]) {
+                   index[count] = i;
+                   count++;
+                }
+            }
+            dupe[i] = arr[i];
     }
 
-    printf("The number is: ");
-    for (int j = num - 1; j >= 0; j--) {
-        printf("%d", arr[j]);
+    if (!count)
+        printf("No Duplicates Found");
+    else {
+        printf("Duplicate numbers found at locations ");
+        for (int i = 0; i < count; i++)
+            printf("%d, ", index[count]);
     }
     return 0;
 }
