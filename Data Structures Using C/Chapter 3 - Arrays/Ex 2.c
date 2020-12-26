@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int main() {
-    int num;
+    int num, sum = 0;
 
     printf("Enter the number of elements in the array: ");
     scanf("%d", &num);
@@ -10,12 +10,11 @@ int main() {
     for (int i = 0; i < num; i++) {
             printf("\narr[%d] = ", i);
             scanf("%d", &arr[i]);
+            sum += arr[i];
     }
 
-    printf("The array elements are ");
+    printf("The sum of the array elements = %d", sum);
+    printf("\nThe mean of the array elements = %.2f", (float) sum / num);
 
-    for(int j = 0; j < num; j++) {
-        printf("\t %d", arr[j]);
-    }
+    return 0;
 }
-

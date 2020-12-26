@@ -1,3 +1,9 @@
 # depslib dependency file v1.0
 1608876653 source:/home/ehu/Documents/C/Data Structures Using C/Chapter 3 - Arrays/main.c
 
+1608876952 source:/home/ehu/Documents/C/Data Structures Using C/Chapter 3 - Arrays/Ex 1.c
+	<stdio.h>
+
+1608938442 source:/home/ehu/Documents/C/Data Structures Using C/Chapter 3 - Arrays/Ex 2.c
+	<stdio.h>
+
