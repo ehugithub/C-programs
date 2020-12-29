@@ -40,3 +40,5 @@ void insert (int *arr, int n, int num, int pos) {
     n++;
 
 }
+
+
