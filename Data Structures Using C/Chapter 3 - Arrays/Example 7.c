@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 void insert (int *arr, int n, int num, int pos);
-
+//insert element in to an array
 
 
 

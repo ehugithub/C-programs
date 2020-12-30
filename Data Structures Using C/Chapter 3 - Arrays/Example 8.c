@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+//insert element into sorted array
+
 int main () {
 	int n, num;
 	printf("Enter the number of elements in the array: ");
