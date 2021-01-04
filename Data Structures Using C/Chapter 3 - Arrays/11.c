@@ -12,7 +12,7 @@ int main() {
             printf("\narr[%d] = ", i);
             scanf("%d", &arr[i]);
     }
-    printf("\nEnter the number of elements in the second array: ");
+    printf("\nEnter the number of elements  in the second array: ");
     scanf("%d", &n2);
     int arr2[n2];
 
