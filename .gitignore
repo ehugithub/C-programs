@@ -1,6 +1,6 @@
 Data\ Structures\ Using\ C/Chapter\ 3\ -\ Arrays/obj/
 Data\ Structures\ Using\ C/Chapter\ 3\ -\ Arrays/bin/
-
+*.vscode
 *.out
 *.csproj
 *.code-workspace
