@@ -74,8 +74,39 @@ struct node *create(struct node *start) {
     int num;
     printf("\nEnter -1 to end, enter the data: ");
     scanf("%d", &num);
+    while(num != -1) {
+        new_node = (struct node*) malloc(sizeof(struct node));
+        new_node->data = num;
+        if (start == NULL) {
+            new_node->next = NULL;
+            start = new_node;
+        }
 
+        else {
+            ptr=start;
+            while(ptr-> != NULL)
+            ptr = ptr->next;
+            ptr->next = new_node;
+            new_node-> = NULL;
+        }
+
+        printf("\nEnter the data: ");
+        scanf("%d", &num);
+    }
+    return start;
 }
+
+struct node *display (struct node *start) {
+    struct node *ptr;
+    ptr = startl
+    while (ptr != NULL) {
+        printf("\t %d", ptr->data);
+        ptr = ptr->next;
+    }
+    return start;
+}
+
+
 
 
 
