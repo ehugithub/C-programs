@@ -96,7 +96,7 @@ struct node *create(struct node *start) {
     return start;
 }
 
-struct node *display (struct node *start) {
+struct node *display(struct node *start) {
     struct node *ptr;
     ptr = startl
     while (ptr != NULL) {
@@ -106,8 +106,51 @@ struct node *display (struct node *start) {
     return start;
 }
 
+struct node *insert_beginning(struct node *start) {
+    struct node *new_node;
+    int num;
+    printf("\nEnter the data: ");
+    scanf("%d", &num);
+    new_node = (struct node *) malloc(sizeof(struct node));
+    new_node->data = num;
+    new_node->next = start;
+    start = new_node;
+    return start;
+}
 
+struct node *insert_end(struct node *start) {
+    struct node *ptr, *new_node;
+    int num;
+    printf("\nEnter the data: ");
+    scanf("%d", &num);
+    new_node = (struct node *) malloc (sizeof(struct node));
+    new_node->data = num;
+    new_node->next = NULL;
+    ptr = start;
+    while(ptr->next != NULL)
+    ptr = ptr->next;
+    ptr->next = new_node;
+    return start;
+}
 
+struct node *insert_before(struct node *start) {
+    struct node *new_node, *ptr, *preptr;
+    int num, val;
+    printf("\nEnter the data: ");
+    scanf("%d", &val);
+    printf("Enter the value before which the data will be inserted: ");
+    scanf("%d", &val);
+    new_node = (struct node *) malloc(sizeof(struct node));
+    new_node->data = num;
+    ptr = start;
+    while (ptr->data != val) {
+        preptr = ptr;
+        ptr = ptr->next;
+    }
+    preptr->next = new_node;
+    new_node->next = ptr;
+    return start;
+}
 
 
 
