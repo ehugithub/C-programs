@@ -1,7 +1,11 @@
 #include <stdio.h>
 
-//circular linked list
+/*circular linked list
+special type of list when first element points to last elment and last element points to first element
 
+
+
+*/
 
 struct node {
     int data;
