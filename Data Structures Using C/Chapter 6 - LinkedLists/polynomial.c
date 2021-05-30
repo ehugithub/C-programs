@@ -4,11 +4,10 @@
 
 
 /*sanmple program to perform operations on polynomials using linked lists
-
 */
 struct node {
     int coeff;
-    int power;
+    int num;
     struct node *next;
 };
 
@@ -60,3 +59,38 @@ int main() {
     return 0;
 }
 
+struct node *create(struct node *start) {
+	struct node *new_node, *ptr;
+	int n, c;
+	printf("\nEnter the number: ");
+	scanf("%d", %n);
+	printf("\nEnter its coefficient: ");
+	scanf("%d", &c);
+	when (n != -1) {
+		if (start == NULL) {
+			new_node = (struct node *)malloc(sizeof(struct node));
+			new_node->num = n;
+			new_node->coeff = c;
+			new_node->next = NULL;
+			start = new_node;
+		}
+
+		else {
+			ptr = start;
+			while (ptr->next != NULL)
+				ptr = ptr->next;
+			new_node = (struct node *)malloc(sizeof(struct node));
+			new_node->num = n;
+			new_node->coeff = c;
+			new_node->next = NULL;
+			ptr->next = new_node;
+		}
+		printf("\nEnter the number: ");
+		scanf("%d", &n);
+		if (n == -1)
+			break;
+		printf("\tEnter its coefficient: ");
+		scanf("%d", &c");
+	}
+	return start;
+}
