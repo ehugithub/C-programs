@@ -4,11 +4,10 @@
 
 
 /*sanmple program to perform operations on polynomials using linked lists
-
 */
 struct node {
     int coeff;
-    int power;
+    int num;
     struct node *next;
 };
 
@@ -60,3 +59,142 @@ int main() {
     return 0;
 }
 
+struct node *create(struct node *start) {
+	struct node *new_node, *ptr;
+	int n, c;
+	printf("\nEnter the number: ");
+	scanf("%d", %n);
+	printf("\nEnter its coefficient: ");
+	scanf("%d", &c);
+	when (n != -1) {
+		if (start == NULL) {
+			new_node = (struct node *)malloc(sizeof(struct node));
+			new_node->num = n;
+			new_node->coeff = c;
+			new_node->next = NULL;
+			start = new_node;
+		}
+
+		else {
+			ptr = start;
+			while (ptr->next != NULL)
+				ptr = ptr->next;
+			new_node = (struct node *)malloc(sizeof(struct node));
+			new_node->num = n;
+			new_node->coeff = c;
+			new_node->next = NULL;
+			ptr->next = new_node;
+		}
+		printf("\nEnter the number: ");
+		scanf("%d", &n);
+		if (n == -1)
+			break;
+		printf("\tEnter its coefficient: ");
+		scanf("%d", &c");
+	}
+	return start;
+}
+
+struct node *display(struct node *start) {
+	struct node *ptr;
+	ptr = start;
+	while (ptr != NULL) {
+		printf("\n%d x %d\t", ptr->num, ptr->coeff);
+		ptr = ptr->next;
+	}
+	return start;
+}
+
+struct node *add(struct node *start1, struct node *start2, struct node *struct3) {
+	struct node *ptr1, *ptr2;
+	int sum_num, c;
+	ptr1 = start1, ptr2 = start2;
+	while (ptr1 != NULL && ptr2 != NULL) {
+		if (ptr1->coeff == ptr2->coeff) {
+			sum_num = ptr1->num + ptr2->num;
+			start3 = add_node(start3, sum_num, ptr1->coeff);
+			ptr1 = ptr1->next;
+			ptr2 = ptr2->next;
+		}
+		else if (ptr1->coeff > ptr2->coeff) {
+			start3 = add_node(start3, ptr1->num, ptr1->coeff);
+			ptr1 = ptr1->next;
+		}
+		else if (ptr1->coeff < ptr2->coeff) {
+			start3 = add_node(start3, ptr2->num, ptr2->coeff);
+			ptr2 = ptr2->next;
+		}
+	}
+
+	if(ptr1 == NULL) {
+		while(ptr2 != NULL) {
+			start3 = add_node(start3, ptr2->num, ptr2->coeff);
+			ptr2 = ptr2->next;
+		}
+	}
+
+	if(ptr2 == NULL) {
+		while(ptr1 != NULL) {
+			start3 = add_node(start3, ptr1->num, ptr1->coeff);
+			ptr1 = ptr1->next;
+		}	
+	}
+	return start3;
+}
+
+struct node *subtract(struct node *start1, struct node *start2, struct node *struct4) {
+	struct node *ptr1. *ptr2;
+	int sub_num, c;
+	ptr1 = start1, ptr2, = start2;
+	do {
+		if (ptr1->coeff == ptr2->coeff) {
+			sub_num = ptr1->num - ptr2->num;
+			start4 = add_node(start4, sub_num, ptr1->coeff);
+			ptr1 = ptr1->next;
+			ptr2 = ptr2->next;
+		}
+		else if(ptr1->coeff > ptr2->coeff) {
+			start4 = add_node(start4, ptr1->num, ptr->coeff);
+			ptr1 = ptr1->next;
+		}
+		else if (ptr1->coeff < ptr2->coeff) {
+			start4 = add_node(start4, ptr2->num, ptr2->coeff);
+			ptr2 = ptr2->next;
+		}
+	} while (ptr1 != NULL || ptr2 != NULL);
+	if (ptr1 == NULL) {
+		while (ptr2 != NULL) {
+			start4 = add_node(start4, ptr2->num, ptr2->coeff);
+			ptr2 = ptr2->next;
+		}
+	}
+	if (ptr2 == NULL) {
+		while (ptr1 != NULL) {
+			start4 = add_node(start4, ptr1->num, ptr1->coeff);
+			ptr1 = ptr1->next;
+		}
+	}
+	return start4;
+}
+
+struct node *add_node(struct node *start) {
+	struct node *ptr, *new_node;
+	if (start == NULL) {
+		new_node = (struct node *)malloc(sizeof(struct node));
+		new_node->num = n;
+		new_node->coeff = c;
+		new_node->next = NULL;
+		start = new_node;
+	}
+	else {
+		ptr = start;
+		while (ptr->next != NULL)
+			ptr = ptr->next;
+		new_node = (struct node *)malloc(sizeof(struct node));
+		new_node->num = n;
+		new_node->coeff = c;
+		new_node->next = NULL;
+		ptr->next = new_node;
+	}
+	return start;
+}
