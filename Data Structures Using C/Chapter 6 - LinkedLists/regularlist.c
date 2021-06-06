@@ -84,10 +84,10 @@ struct node *create(struct node *start) {
 
         else {
             ptr=start;
-            while(ptr-> != NULL)
-            ptr = ptr->next;
-            ptr->next = new_node;
-            new_node-> = NULL;
+            while(ptr-> != NULL){
+           		ptr = ptr->next;
+            	ptr->next = new_node;
+            	new_node-> = NULL;
         }
 
         printf("\nEnter the data: ");
