@@ -198,7 +198,7 @@ struct node *delete_node(struct node *start) {
     scanf("%d", &val);
     ptr = start;
     if(ptr->data == val) {
-	start = delete_beg(start);
+	start = delete_beginning(start);
 	return start;
     }
 
@@ -236,7 +236,7 @@ struct node *delete_list(struct node *start) {
 	ptr = start;
 	while(ptr != NULL) {
 	    printf("\n%dis to be deleted next", ptr->data);
-	    start = delete_beg(ptr);
+	    start = delete_beginning(ptr);
 	    ptr = start;
 	}
     }
