@@ -3,7 +3,7 @@
 #include <string.h>
 #include <ctype.h>
 #define MAX 100
-// evaluates postfix input 
+// evaluates prefix input 
 
 float stack[MAX];
 int top = -1;
@@ -11,24 +11,24 @@ float pop();
 void push(float);
 
 int main () {
-	char postfix[MAX];
-	int i = 0, n1, n2;
+	char prefix[MAX], ch;
+	int n1, n2, len;
 
-	printf("Enter your postfix expression (no spaces): ");
-	scanf("%[^\n]s", postfix);
-	
-	while(postfix[i] != '\0') {
-		if (isdigit(postfix[i]))
-			push((float)(postfix[i++] - '0'));
+	printf("Enter your prefix expression (no spaces): ");
+	scanf("%[^\n]s", prefix);
+	len = strlen(prefix);
+	for(int i = len - 1; i > -1; i--) {
+		if (isdigit(prefix[i]))
+			push(prefix[i] - '0');
 		else {
 			n1 = pop();
 			n2 = pop();
-			switch (postfix[i++]) {
-				case '*': push(n2 * n1); break;
-				case '/': push(n2 / n1); break;
-				case '+': push(n2 + n1); break;
-				case '-': push(n2 - n1); break;
-				case '%': push(n2 % n1); break;
+			switch (prefix[i]) {
+				case '*': push(n1 * n2); break;
+				case '/': push(n1 / n2); break;
+				case '+': push(n1 + n2); break;
+				case '-': push(n1 - n2); break;
+				case '%': push(n1 % n2); break;
 			}
 		}
 	}
