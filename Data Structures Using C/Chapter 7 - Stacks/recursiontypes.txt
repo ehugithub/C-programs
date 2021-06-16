@@ -1,0 +1,50 @@
+Types of recursion
+	1. direct vs indirect recursion
+	2. operation pending at each recursive call? (tail-recursive)
+	3. linear / tree recursive (structure of recursive pattern)
+
+Direct recursion
+	explicitly calls itself
+	
+	int func (int n) {
+		if (n == 0)
+			return n;
+		else
+			return func(n - 1);
+	}
+Indirect recursion
+	contians a call to another function that eventually calls it
+
+	int f1 (int n) {
+		if (n == 0)
+			return n;
+		else
+			return f2(n);
+	}
+
+	int f2 (int n) {
+		return f1(n - 1);
+	}
+
+Tail recursion
+	no pending operations when recursive function returns to its caller
+	highly diserable, as they are efficient to use 
+
+	int fact (int n) {
+		if (n == 1)
+			return 1;
+		else
+			return (n*fact(n - 1));
+	}
+
+	non-tail recursive, as there is a multiplication to be performed at the end of the call
+
+Converting recursive functions to tail recursive
+ 	done through the use of an auxillary parameter
+		pending option is done through the auxillary parameter (sometimes even through another auxillary function)
+
+Linear vs tree recursion
+	linearly recursive: pending operation does not make another recursive call to the function, e.g. the factorial function
+	tree recursive:  pending operation makes another recursive call to function, e.g. the fibonacci fucntion
+
+		
