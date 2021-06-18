@@ -31,15 +31,15 @@ int main() {
         printf("\n2: Display a list");
         printf("\n3: Add a node at the beginning");
         printf("\n4: Add a node at the end");
-        printf("\n5: Delete a node form the beginning");
-        printf("\n6: Delete a node form the end");
+        printf("\n5: Delete a node from the beginning");
+        printf("\n6: Delete a node from the end");
         printf("\n7: Delete a node after a given node");
         printf("\n8: Delete entire list");
         printf("\n9: Exit");
         printf("\nEnter your option: ");
         scanf("%d", &option);
 
-        swithc (option) {
+        switch (option) {
             case 1: start = create(start);
                     printf("\nLinked list created");
                     break;
@@ -66,7 +66,7 @@ int main() {
 struct node *create(struct node *start) {
      struct node *new_node, *ptr;
      int num;
-     print("\nEnter -1 to end");
+     printf("\nEnter -1 to end");
      printf("\nEnter the data: ");
      scanf("%d", &num);
      while (num != -1) {
@@ -79,7 +79,7 @@ struct node *create(struct node *start) {
         }
         else {
             ptr = start;
-            while (ptr-> next != start)
+            while (ptr->next != start)
                 ptr = ptr->next;
             ptr->next = new_node;
             new_node->next = start;
@@ -102,7 +102,7 @@ struct node *display(struct node *start) {
     return start;
 }
 
-struct node *insert_beg(struct node *start) {
+struct node *insert_beginning(struct node *start) {
     struct node *ptr, *new_node;
     int num;
     printf("\nEnter the data to be inserted: ");
@@ -135,18 +135,18 @@ struct node *insert_end(struct node *start) {
 
 struct node *delete_beginning(struct node *start) {
     struct node *ptr;
-    *ptr = start;
+    ptr = start;
     while (ptr->next != start)
         ptr = ptr->next;
     ptr->next = start->next;
-    free(start)
+    free(start);
     start = ptr->next;
     return start;
 }
 
 struct node *delete_end(struct node *start) {
     struct node *ptr, *preptr;
-    *ptr = start;
+    ptr = start;
     while (ptr->next != start){
         preptr = ptr;
         ptr = ptr->next;
