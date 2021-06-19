@@ -16,11 +16,12 @@ struct queue *q;
 void createq(struct queue *);
 struct queue *insert(struct queue *, int);
 int delete(struct queue *);
-struct queue *display(struct queue *);
+void display(struct queue *);
 int peek(struct queue*);
 
 int main () {
 	int option, num;
+	q = (struct queue *)malloc(sizeof(struct queue));
 	createq(q);
 	do {
 		printf("\n1. Insert");
@@ -37,9 +38,9 @@ int main () {
 					break;
 			case 2: printf("The value deleted was %d(-1 means the queue was empty).\n", delete(q));
 					break;
-			case 3: q = display(q);
+			case 3: display(q);
 					break;
-			case 4: printf("The value a the front is %d(-1 means the queue was empty\n).", peek(q));
+			case 4: printf("The value a the front is %d(-1 means the queue was empty)\n.", peek(q));
 					break;
 		}	
 	} while(option != 5);
@@ -68,18 +69,18 @@ struct queue *insert(struct queue *q, int num) {
 	return q;
 }
 
-struct queue *display(struct queue *q) {
+void display(struct queue *q) {
 	struct node *ptr;
 	ptr = q->top;
 	if (ptr == NULL)
 		printf("\nQueue empty");
 	else {
-		while (ptr->next != q->rear) {
-			printf("\n%d", ptr->data);
+		printf("\n%d", ptr->data);
+		while (ptr != q->rear) {
 			ptr = ptr->next;
+			printf("\n%d", ptr->data);
 		}
 	}
-	return q;
 }
 
 int delete(struct queue *q) {

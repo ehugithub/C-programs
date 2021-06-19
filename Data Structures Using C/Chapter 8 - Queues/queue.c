@@ -32,13 +32,15 @@ int main () {
 
 void insert() {
 	int n;
-	printf("\nEnter the number to be inserted: ");
-	scanf("%d", &n);
+	if (top == -1)
+		top = 0;
 	if (rear == MAX - 1)
 		printf("\nQueue Overflow");
-	else if (top == -1)
-		top = 0;
-	queue[++rear] = n;
+	else {
+		printf("\nEnter the number to be inserted: ");
+		scanf("%d", &n);
+		queue[++rear] = n;
+	}
 }
 
 int delete() {
@@ -66,7 +68,7 @@ void display () {
 	else {
 		printf("\n");
 		for (int i = top; i <= rear; i++) {
-			printf("\t%d", queue[i]);
+			printf("%d\t", queue[i]);
 			}
 	}
 }
