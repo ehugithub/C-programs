@@ -5,7 +5,7 @@
 
 
 int q[MAX];
-int top = -1, tail = -1;
+int *top = NULL, *tail = NULL;
 
 void insert();
 int delete();
@@ -37,53 +37,52 @@ int main () {
 
 void insert() {
 	int num;
-	if(top == -1)
-		top = 0;
-	if ((tail == MAX - 1 && top == 0) || (top - 1 == tail && top != 0))
+	if(top == NULL)
+		top = q;
+	if ((tail == q + MAX && top == q) || (top - 1 == tail && top != q))
 		printf("\nQueue full");
 	else {
-		if (tail == MAX - 1)
-			tail = -1;
+		if (tail == q + MAX)
+			tail = NULL;
 		printf("Enter the number to be inserted: ");
-		scanf("%d", &num);
-		q[++tail] = num;
+		scanf("%d", ++tail);
 	}
 }
 
 int delete() {
 	int num;
-	if (top == -1)
+	if (top == NULL)
 		return -1;
 	else if (top == tail) {
-		num = q[top];
-		top = tail = -1;
+		num = *top;
+		top = tail = NULL;
 	}
-	else if (top == MAX - 1) {
-		num = q[top];
-		top = 0;
+	else if (top == q + MAX) {
+		num = *top;
+		top = q;
 	}
 	else
-		num = q[top++];
+		num = *top++;
 	return num;
 }
 
 int peek() {
-	if (top == -1)
+	if (top == NULL)
 		return -1;
 	else
-		return q[top];
+		return *top;
 }
 
 void display() {
-	int n;
-	if (top == -1)
+	int *n;
+	if (top == NULL)
 		printf("Queue is empty");
 	else {
 		for (n = top; n != tail; n++) {
-			if (n == MAX - 1)
-				n = 0;
-			printf("%d\t", q[n]);
+			if (n == q + MAX)
+				n = q;
+			printf("%d\t", *n);
 		}
-		printf("%d", q[n]);
+		printf("%d", *n);
 	}
 }
