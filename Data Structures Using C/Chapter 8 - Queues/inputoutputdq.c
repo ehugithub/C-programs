@@ -6,7 +6,8 @@
 
 int q[MAX];
 int left = -1, right = -1;
-void insert(void);
+void insertl(void);
+void insertr(void);
 void deletel(void);
 void deleter(void);
 void display(void);
@@ -31,7 +32,7 @@ int main () {
 	return 0;
 }
 
-void insert() {
+void insertl() {
 	int num;
 	printf("\nEnter the value to be inserted: ");
 	scanf("%d", &num);
@@ -49,6 +50,8 @@ void insert() {
 	}
 	q[left = num];
 }
+
+void:
 
 void deletel() {
 	if (left == -1) {
