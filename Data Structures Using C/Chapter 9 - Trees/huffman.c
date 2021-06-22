@@ -10,7 +10,7 @@ struct node {
 } *start = NULL;
 
 
-struct node *insert(struct node *, /*struct node *, */char, int);
+void insert(struct node *, char, int);
 void merge();
 
 int main () { 
@@ -18,18 +18,22 @@ int main () {
 	int i = 0;
 	char input[CHARS];
 	int frequency[CHARS];
-	struct node *ptr;
+	struct node *ptr = malloc(sizeof(struct node));
 	printf("Enter list of characters: ");
 	scanf("%[^\n]", input);
 	printf("Enter their corresponding frequencies, separated by a space: ");
 	while(ch != '\n')
 		scanf("%d%c", &frequency[i++], &ch);
+	/*for (int l = 0; l < i; l++) {
+		insert(ptr, input[l], frequency[l]);
+	} */
+	insert(ptr, input[0], frequency[0]);
+	printf("%c%d\n", start->data, start->freq);
+	insert(ptr, input[1], frequency[1]);
+	printf("%c%d\n", start->next->data, start->next->freq);
+	insert(ptr3, input[2], frequency[2]);
+	printf("%c%d\n", start->next->next->data, start->next->next->freq);
 
-	for (int l = 0; l < i; l++) {
-		printf("\n%d", l);
-		//ptr = (struct node *)malloc(sizeof(struct node));
-		start = insert(start, input[l], frequency[l]);
-	}
 	/*
 	ptr = start;
 	while(ptr != NULL)
@@ -40,22 +44,21 @@ int main () {
 	return 0;
 }
 
-struct node *insert(struct node *start, /* struct node *ptr, */char letter, int fre){
-	struct node *ptr, *ptr2;
-	ptr = (struct node *)malloc(sizeof(struct node));
-	ptr->data = letter;
-	ptr->freq = fre;
-	printf("%d\t%c", ptr->freq, ptr->data);
-	if (start == NULL /* || fre < start->freq */) {
-		ptr->next = start;
-		start = ptr;
+void insert(struct node *p, char letter, int fre){
+	struct node *ptr2;
+	//ptr = (struct node *)malloc(sizeof(struct node));
+	p->data = letter;
+	p->freq = fre;
+	if (start == NULL || fre < start->freq) {
+		p->next = start;
+		start = p;
 	}
 	else {
 		ptr2 = start;
 		while(ptr2->next != NULL && ptr2->next->freq <= fre)
 			ptr2 = ptr2->next;
-		ptr->next = ptr2->next;
-		ptr->next = ptr;
+		p->next = ptr2->next;
+		ptr2->next = p;
 	}
 }
 
@@ -66,5 +69,5 @@ void merge() {
 	p3 = (struct node *)malloc(sizeof(struct node));
 	p3->left = p1;
 	p3->right = p2;
-	insert(start, '\0', p1->freq + p2->freq);
+	insert(p3, '\0', p1->freq + p2->freq);
 }
