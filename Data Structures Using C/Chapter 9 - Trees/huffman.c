@@ -24,29 +24,18 @@ int main () {
 	printf("Enter their corresponding frequencies, separated by a space: ");
 	while(ch != '\n')
 		scanf("%d%c", &frequency[i++], &ch);
-	/*for (int l = 0; l < i; l++) {
+	for (int l = 0; l < i; l++) {
+		ptr = malloc(sizeof(struct node));
 		insert(ptr, input[l], frequency[l]);
-	} */
-	insert(ptr, input[0], frequency[0]);
-	printf("%c%d\n", start->data, start->freq);
-	insert(ptr, input[1], frequency[1]);
-	printf("%c%d\n", start->next->data, start->next->freq);
-	insert(ptr3, input[2], frequency[2]);
-	printf("%c%d\n", start->next->next->data, start->next->next->freq);
-
-	/*
-	ptr = start;
-	while(ptr != NULL)
-		printf("%c\t%d\n", ptr->data, ptr->freq);
+	}
 	
 	while(start->next != NULL)
-		merge(start, start->next); */
+		merge(start, start->next);
 	return 0;
 }
 
 void insert(struct node *p, char letter, int fre){
 	struct node *ptr2;
-	//ptr = (struct node *)malloc(sizeof(struct node));
 	p->data = letter;
 	p->freq = fre;
 	if (start == NULL || fre < start->freq) {
