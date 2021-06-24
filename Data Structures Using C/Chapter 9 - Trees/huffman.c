@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <string.h>
 #define CHARS 26
 
 struct node {
@@ -8,10 +9,13 @@ struct node {
 	int freq;
 	struct node *left, *right, *next;
 } *start = NULL;
-
+//char code[5];
+//int count = 0;
 
 void insert(struct node *, char, int);
 void merge();
+void printArray(int arr[], int);
+void printcode(struct node *, int arr[], int);
 
 int main () { 
 	char ch; 
@@ -31,11 +35,15 @@ int main () {
 	
 	while(start->next != NULL)
 		merge(start, start->next);
+	int arr[i], num = 0;
+	printcode(start, arr, num);
 	return 0;
 }
 
 void insert(struct node *p, char letter, int fre){
 	struct node *ptr2;
+	if(letter != '\0')
+		p->left = p->right = NULL;
 	p->data = letter;
 	p->freq = fre;
 	if (start == NULL || fre < start->freq) {
@@ -59,4 +67,25 @@ void merge() {
 	p3->left = p1;
 	p3->right = p2;
 	insert(p3, '\0', p1->freq + p2->freq);
+}
+
+void printcode(struct node *ptr, int code[], int count) {
+	if(ptr->left != NULL) {
+		code[count] = 0;
+		printcode(ptr->left, code, count + 1);
+	}
+	if(ptr->right != NULL) {
+		code[count] = 1;
+		printcode(ptr->right, code, count + 1);
+	}
+	if(ptr->left == NULL && ptr->right == NULL) {
+		printf("%c: ", ptr->data); 
+		printArray(code, count);
+	}
+}
+
+void printArray(int arr[], int n) {
+	for(int i = 0; i < n; ++i)
+		printf("%d", arr[i]);
+	printf("\n");
 }
