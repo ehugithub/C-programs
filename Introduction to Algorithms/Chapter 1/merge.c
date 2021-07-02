@@ -18,3 +18,14 @@ void printarray(const int *ar, int n) {
 	printf("\n");
 
 }
+
+
+
+void mergesort(int ar[], int a, int b) {
+	int c = a + (b - a + 1) / 2;
+	if(a < b) {
+		
+
+	}
+
+}
