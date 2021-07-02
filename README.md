@@ -1,2 +1,2 @@
 # C-programs
-A collection of C programs based off of various programming textbooks and exercises
+A collection of C programs, covering topics including Data Structures, Algorithms, DP, graph.
