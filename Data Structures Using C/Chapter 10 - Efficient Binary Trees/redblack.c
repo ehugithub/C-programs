@@ -61,7 +61,6 @@ void checkvalid(struct node *ptr) {
 		uncle(ptr) = BLACK;
 		grandparent(ptr) = RED;
 		checkvalid(grandparent(ptr));
-
 	}
 
 }
