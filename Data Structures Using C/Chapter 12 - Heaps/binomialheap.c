@@ -13,6 +13,7 @@ struct node *minkey(struct node *);
 struct node *unionheap(struct node *, struct node *);
 struct node *merge(struct node *, struct node *);
 struct node *mindegree(struct node *);
+void deleteh(struct node *);
 
 int main () {
 
@@ -59,8 +60,17 @@ struct node *merge(struct node *n, struct node *k) {
 	return n;
 }
 
+void deleteh(struct node *n) {
+	if(n->child != NULL) 
+		deleteh(n->child);
+	else if(n->sibling != NULL)
+		deleteh(n->sibling);
+	free(n);
+
+}
+
 struct node *unionheap(struct node *p1, struct node *p2) {
-	struct node *new, *temp = p1;
+	struct node *new, *temp = p1, *next, *ptr;
 	create(new);
 	new = (mindegree(p1) < mindegree(p2)) ? p1 : p2;
 	temp = new;
@@ -68,6 +78,22 @@ struct node *unionheap(struct node *p1, struct node *p2) {
 		temp->sibling = (mindegree(p1) < mindegree(p2)) ? p1 : p2;
 		temp = temp->sibling;
 	}
-	free(p1);
-	free(p2);
+	deleteh(p1);
+	deleteh(p2);
+	temp = new;
+	next = temp->sibling;
+	while(next != temp) {
+		if(temp->degree == next->degree && next->sibling->degree == next->degree) {
+			next = next->sibling;
+			ptr = ptr->sibling;
+		}
+		else {
+			if(ptr->data < next->data)
+				merge(ptr, next);
+			else
+				merge(next, ptr);
+			next = ptr->sibling;
+		}
+	}
+	return new;
 }
