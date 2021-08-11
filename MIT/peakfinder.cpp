@@ -1,14 +1,13 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 int findpeak(int [], int, int, int);
-
 
 int main () {
 	int list[] = {10, 20, 15, 2, 23, 90, 67};
 	int s = sizeof(list) / sizeof(list[0]);
 	cout << "Index of a peak is" << findpeak(list, 0, s - 1, s);
-
 	return 0;
 }
 
