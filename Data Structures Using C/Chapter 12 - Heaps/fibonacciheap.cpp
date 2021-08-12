@@ -21,6 +21,7 @@ nodeptr min = nullptr;
 void initialize(nodeptr, int, int);
 void insert(nodeptr, int);
 nodeptr unionheap(nodeptr, nodeptr);
+nodeptr link(nodeptr, nodeptr);
 
 int main () {
 	return 0;
@@ -68,3 +69,15 @@ nodeptr unionheap(nodeptr h1, nodeptr h2) {
 		return h2;
 	}
 }
+
+nodeptr link(nodeptr n1, nodeptr n2) {
+	// n1 smaller key than n2
+	n1->right = n2->right;
+	n2->right = n1->child;
+	n2->left = n1->child->left->left;
+	n1->child->left = n2;
+	n1->degree += 1;
+	n2->mark = false;
+	return n1;
+}
+
