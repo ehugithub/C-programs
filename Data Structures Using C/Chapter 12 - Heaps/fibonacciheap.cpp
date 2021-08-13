@@ -6,8 +6,8 @@ using namespace std;
 struct node {
 	int data;
 	int degree;
-	int numnodes = 0;
 	bool mark;
+	int numnodes = 0;
 	node *parent;
 	node *child;
 	node *left;
@@ -18,19 +18,20 @@ typedef struct node *nodeptr;
 
 nodeptr min = nullptr;
 
-void initialize(nodeptr, int, int);
+void initialize(nodeptr, int);
 void insert(nodeptr, int);
 nodeptr unionheap(nodeptr, nodeptr);
 nodeptr link(nodeptr, nodeptr);
+nodeptr consolidate(nodeptr);
 
 int main () {
 	return 0;
 }
 
-void initialize(nodeptr node, int data, int degree) {
+void initialize(nodeptr node, int data) {
 	node = (nodeptr)malloc(sizeof(node));
 	node->data = data;
-	node->degree = degree;
+	node->degree = 0;
 	node->parent = node->child = nullptr;
 	node->left = node->right = node;
 	node->mark = false;
@@ -49,23 +50,22 @@ void insert(nodeptr min, int num) {
 	}
 	else
 		min = node;
-	min->numnodes++;
+	min->numnodes += 1;
 }
 
 nodeptr unionheap(nodeptr h1, nodeptr h2) {
-	nodeptr temp1 = h1, temp2 = h2;
 	h1->right->left = h2->left;
 	h2->left->right = h1->right;
 	h1->left = h2;
 	h2->right = h1;
 	if(h1->data < h2->data) {
-		free(h2);
 		h1->numnodes += h2->numnodes;
+		free(h2);
 		return h1;
 	}
 	else {
-		free(h1);
 		h2->numnodes += h1->numnodes;
+		free(h1);
 		return h2;
 	}
 }
@@ -81,3 +81,27 @@ nodeptr link(nodeptr n1, nodeptr n2) {
 	return n1;
 }
 
+nodeptr extractmin(nodeptr h) {
+	nodeptr z = min;
+	if(z != nullptr) {
+		nodeptr temp = z;
+		do {
+			insert(min, temp);
+			temp->parent = nullptr;
+			temp = temp->right;
+		} while(temp->right != z);
+		z->left->right = z->right;
+		z->right->left = z->left;
+		if(z == z->right) {
+			min = nullptr;
+		}
+		else if(min == z->right)
+			consolidate(h);
+		min->numnodes -= 1;
+	}
+	return min;
+}
+
+nodeptr consolidate(nodeptr h) {
+	//too complicated (for now):/
+}
