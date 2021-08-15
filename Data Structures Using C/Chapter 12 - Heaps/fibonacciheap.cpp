@@ -23,6 +23,8 @@ void insert(nodeptr, int);
 nodeptr unionheap(nodeptr, nodeptr);
 nodeptr link(nodeptr, nodeptr);
 nodeptr consolidate(nodeptr);
+void decreaseval(nodeptr, int);
+void deletenode(nodeptr);
 
 int main () {
 	return 0;
@@ -104,4 +106,21 @@ nodeptr extractmin(nodeptr h) {
 
 nodeptr consolidate(nodeptr h) {
 	//too complicated (for now):/
+}
+
+void decreaseval(nodeptr node, int key) {
+	if(node->data < key)
+		return;
+	node->data = key;
+	if(node != min || node->parent->data < node->data) {
+		cut(node, node->parent);
+		cascadingcut(node, node->parent);
+	}
+	if(node->val < min->val)
+		min = node;
+}
+
+void deletenode(nodeptr node) {
+	decreaseval(node, INT_MIN);
+	extractmin(min);
 }
