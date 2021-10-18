@@ -44,6 +44,9 @@ void merge(int ar[], int a, int b, int c) {
 
 void mergesort(int ar[], int a, int c) {
 	if(a < c) {
+		for (int i = a; i <= c; i++)
+			printf("%d ", ar[i]);
+		printf("\n");
 		int b = (a + c) / 2;
 		mergesort(ar, a, b);
 		mergesort(ar, b + 1, c);
