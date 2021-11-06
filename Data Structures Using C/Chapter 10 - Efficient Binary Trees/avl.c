@@ -13,6 +13,8 @@ struct node *insert(struct node *, int, bool);
 void display(struct node *, int);
 
 int main() {
+	struct node *root = NULL;
+	root = insert(root, 5, true);
 	return 0;
 }
 
