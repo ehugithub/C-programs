@@ -57,9 +57,9 @@ int main () {
 
 int findresidue(int q, int p) {
 	for (int i = 0; i < p; i++) {
-		if (q == -1 && (i * i) % p == p - 1)
+		if (q == -1 && (i * i * i * i) % p == p - 1)
 			return i;
-		if ((i * i) % p == q % p)
+		if ((i * i * i * i) % p == q % p)
 			return i;
 	}
 	return -1;
